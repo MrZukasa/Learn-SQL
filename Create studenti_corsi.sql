@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS studenti_corsi(
+    ID INT NOT NULL AUTO_INCREMENT,
+    ID_studente INT NOT NULL,
+    ID_corso INT NOT NULL,
+    PRIMARY KEY (ID)
+);

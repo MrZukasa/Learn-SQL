@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS docenti(
+    ID_docente INT NOT NULL AUTO_INCREMENT REFERENCES corsi(ID_docente),
+    nome VARCHAR(25) NOT NULL,
+    cognome VARCHAR(25) NOT NULL,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    PRIMARY KEY (ID_docente)
+);
