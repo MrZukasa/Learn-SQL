@@ -1,0 +1,272 @@
+mysql> SELECT * FROM docenti;
++------------+----------+-----------+----------------------------+
+| ID_docente | nome     | cognome   | email                      |
++------------+----------+-----------+----------------------------+
+|          1 | Anna     | Neri      | annaneri@gmail.com         |
+|          2 | Marco    | Verdi     | marcoverdi@gmail.com       |
+|          3 | Luca     | Viola     | lucaviola@gmail.com        |
+|          4 | Geronimo | Rosso     | geronimorosso@gmail.com    |
+|          5 | Carla    | Perlato   | carlaperlato@gmail.com     |
+|          6 | Carlo    | Ciano     | carlociano@gmail.com       |
+|          7 | Edoardo  | Giallo    | edoardogiallo@gmail.com    |
+|          8 | Leonardo | Marrone   | leonardomarrone@gmail.com  |
+|          9 | Michele  | Arancione | michelearancione@gmail.com |
+|         10 | Gianni   | Azzurro   | gianniazzurro@gmail.com    |
+|         11 | Giovanni | Gialli    | giovannigialli@gmail.com   |
+|         12 | Antonio  | Verdi     | antonioverdi@gmail.com     |
+|         13 | Maurizio | Verde     | maurizioverde@gmail.com    |
++------------+----------+-----------+----------------------------+
+13 rows in set (0.00 sec)
+
+mysql> SELECT email FROM studenti WHERE data_nascita < date_sub(current_date(), INTERVAL 18 year);
++----------------------------+
+| email                      |
++----------------------------+
+| lucaviola@gmail.com        |
+| geronimorosso@gmail.com    |
+| mattiaromano@gmail.com     |
+| andreacolombo@gmail.com    |
+| ricardoricci@gmail.com     |
+| sofiabruno@gmail.com       |
+| alicegallo@gmail.com       |
+| emmamancini@gmail.com      |
+| ginevracosta@gmail.com     |
+| giuliagiordano@gmail.com   |
+| giuliarizzo@gmail.com      |
+| giorgialombardi@gmail.com  |
+| gretamoretti@gmail.com     |
+| beatricebarberi@gmail.com  |
+| annafontana@gmail.com      |
+| martinasantoro@gmail.com   |
+| mattiamariani@gmail.com    |
+| riccardorinaldi@gmail.com  |
+| paolocaruso@gmail.com      |
+| lucaferrara@gmail.com      |
+| andreagalli@gmail.com      |
+| giorgiomartini@gmail.com   |
+| ludovicoleone@gmail.com    |
+| marcolongo@gmail.com       |
+| giacomogentile@gmail.com   |
+| enricomartinelli@gmail.com |
+| simonevitale@gmail.com     |
+| paololombardo@gmail.com    |
+| auroracoppola@gmail.com    |
+| francescoparisi@gmail.com  |
++----------------------------+
+30 rows in set (0.00 sec)
+
+mysql> SELECT * FROM corsi WHERE data_fine < current_date();
++----------+--------------------+-------------+------------+-------+------------------+------------+
+| ID_corso | nome               | data_inizio | data_fine  | costo | partecipanti_max | ID_docente |
++----------+--------------------+-------------+------------+-------+------------------+------------+
+|        1 | Matematica 101     | 2021-01-01  | 2021-02-01 |   100 |                6 |          1 |
+|        2 | Matematica 101     | 2021-02-02  | 2021-03-01 |   100 |                4 |          3 |
+|        3 | Matematica 101     | 2022-03-02  | 2022-04-01 |   120 |               12 |          7 |
+|        4 | Matematica 102     | 2021-01-01  | 2021-02-01 |   100 |                5 |          5 |
+|        5 | Matematica 102     | 2021-02-01  | 2021-03-01 |   150 |               10 |          1 |
+|        6 | Storia 101         | 2021-01-01  | 2021-04-01 |   120 |                6 |          9 |
+|        7 | Biologia 101       | 2022-01-01  | 2022-02-01 |    80 |                7 |          4 |
+|        8 | Programmazione 101 | 2021-01-01  | 2021-02-01 |   200 |               11 |          5 |
+|        9 | Italiano 101       | 2021-07-01  | 2021-09-01 |   150 |               15 |         11 |
+|       10 | Latino 101         | 2022-02-01  | 2022-03-01 |   130 |                5 |          5 |
+|       11 | Chimica 101        | 2022-01-01  | 2022-04-01 |    70 |               10 |          7 |
+|       13 | Biologia 102       | 2022-01-01  | 2022-02-01 |   120 |                7 |         13 |
+|       14 | Matematica 103     | 2021-12-01  | 2022-02-01 |   180 |                6 |          1 |
+|       15 | Matematica 104     | 2021-12-01  | 2022-03-01 |   200 |                5 |          7 |
++----------+--------------------+-------------+------------+-------+------------------+------------+
+14 rows in set (0.00 sec)
+
+mysql> SELECT * FROM corsi WHERE data_inizio >= current_date();
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM corsi WHERE data_inizio >= current_date() AND costo <= 100;
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM corsi WHERE ID_docente = 1
+    -> ;
++----------+----------------+-------------+------------+-------+------------------+------------+
+| ID_corso | nome           | data_inizio | data_fine  | costo | partecipanti_max | ID_docente |
++----------+----------------+-------------+------------+-------+------------------+------------+
+|        1 | Matematica 101 | 2021-01-01  | 2021-02-01 |   100 |                6 |          1 |
+|        5 | Matematica 102 | 2021-02-01  | 2021-03-01 |   150 |               10 |          1 |
+|       14 | Matematica 103 | 2021-12-01  | 2022-02-01 |   180 |                6 |          1 |
++----------+----------------+-------------+------------+-------+------------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM corsi WHERE ID_docente = 1 and data_fine < current_date();
++----------+----------------+-------------+------------+-------+------------------+------------+
+| ID_corso | nome           | data_inizio | data_fine  | costo | partecipanti_max | ID_docente |
++----------+----------------+-------------+------------+-------+------------------+------------+
+|        1 | Matematica 101 | 2021-01-01  | 2021-02-01 |   100 |                6 |          1 |
+|        5 | Matematica 102 | 2021-02-01  | 2021-03-01 |   150 |               10 |          1 |
+|       14 | Matematica 103 | 2021-12-01  | 2022-02-01 |   180 |                6 |          1 |
++----------+----------------+-------------+------------+-------+------------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*) AS Partecipanti FROM studenti_corsi WHERE ID_corso = 8;
++--------------+
+| Partecipanti |
++--------------+
+|            6 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT corsi.ID_corso, corsi.nome, corsi.partecipanti_max, count(studenti_corsi.ID) AS Numero FROM studenti_corsi
+    -> INNER JOIN corsi ON corsi.ID_corso = studenti_corsi.ID_corso
+    -> GROUP BY studenti_corsi.ID_corso 
+    -> HAVING Numero >= corsi.partecipanti_max;
++----------+----------------+------------------+--------+
+| ID_corso | nome           | partecipanti_max | Numero |
++----------+----------------+------------------+--------+
+|        1 | Matematica 101 |                6 |      9 |
+|        2 | Matematica 101 |                4 |      6 |
+|        4 | Matematica 102 |                5 |      7 |
+|        7 | Biologia 101   |                7 |      9 |
+|       10 | Latino 101     |                5 |      8 |
+|       15 | Matematica 104 |                5 |      6 |
++----------+----------------+------------------+--------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT studenti.ID_studente, studenti.nome, studenti.cognome, COUNT(studenti_corsi.ID) AS Corsi FROM studenti INNER JOIN studenti_corsi ON studenti.ID_studente = studenti_corsi.ID_studente GROUP BY studenti_corsi.ID_studente;
++-------------+------------+------------+-------+
+| ID_studente | nome       | cognome    | Corsi |
++-------------+------------+------------+-------+
+|           1 | Francesco  | Ferrari    |     6 |
+|           2 | Leonardo   | Russo      |     3 |
+|           3 | Alessandro | Esposito   |     1 |
+|           4 | Lorenzo    | Bianchi    |     6 |
+|           5 | Mattia     | Romano     |     2 |
+|           6 | Andrea     | Colombo    |     2 |
+|           7 | Riccardo   | Ricci      |     1 |
+|           8 | Tommaso    | Marino     |     1 |
+|           9 | Edoardo    | Greco      |     1 |
+|          10 | Sofia      | Bruno      |     5 |
+|          11 | Alice      | Gallo      |     1 |
+|          12 | Giulia     | Conti      |     2 |
+|          13 | Emma       | Mancini    |     3 |
+|          14 | Ginevra    | Costa      |     1 |
+|          15 | Giulia     | Giordano   |     2 |
+|          16 | Giulia     | Rizzo      |     6 |
+|          17 | Giorgia    | Lombardi   |     1 |
+|          18 | Greta      | Moretti    |     1 |
+|          19 | Beatrice   | Barberi    |     1 |
+|          20 | Anna       | Fontana    |     1 |
+|          21 | Martina    | Santoro    |     2 |
+|          22 | Mattia     | Mariani    |     3 |
+|          23 | Riccardo   | Rinaldi    |     2 |
+|          24 | Paolo      | Caruso     |     1 |
+|          25 | Luca       | Ferrara    |     5 |
+|          26 | Andrea     | Galli      |     3 |
+|          27 | Giorgio    | Martini    |     2 |
+|          28 | Ludovico   | Leone      |     1 |
+|          29 | Marco      | Longo      |     4 |
+|          30 | Giacomo    | Gentile    |     1 |
+|          31 | Enrico     | Martinelli |     1 |
+|          32 | Simone     | Vitale     |     1 |
+|          33 | Paolo      | Lombardo   |     1 |
+|          34 | Luca       | Serra      |     4 |
+|          35 | Aurora     | Coppola    |     3 |
+|          36 | Roberto    | Marchetti  |     2 |
+|          37 | Francesco  | Parisi     |     1 |
++-------------+------------+------------+-------+
+37 rows in set (0.00 sec)
+
+mysql> SELECT corsi.ID_corso, corsi.nome AS Nome_Corso, studenti.nome AS Nome_Studente FROM corsi 
+    -> INNER JOIN studenti_corsi ON studenti_corsi.ID_corso = corsi.ID_corso
+    -> INNER JOIN studenti ON studenti.ID_studente = studenti_corsi.ID_studente
+    -> WHERE studenti_corsi.ID_studente = 1;
++----------+----------------+---------------+
+| ID_corso | Nome_Corso     | Nome_Studente |
++----------+----------------+---------------+
+|        1 | Matematica 101 | Francesco     |
+|        2 | Matematica 101 | Francesco     |
+|        5 | Matematica 102 | Francesco     |
+|        7 | Biologia 101   | Francesco     |
+|       15 | Matematica 104 | Francesco     |
++----------+----------------+---------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT corsi.nome AS Nome_Corso, COUNT(*) AS Riproposte FROM corsi GROUP BY corsi.nome;
++--------------------+------------+
+| Nome_Corso         | Riproposte |
++--------------------+------------+
+| Biologia 101       |          1 |
+| Biologia 102       |          1 |
+| Chimica 101        |          1 |
+| Italiano 101       |          1 |
+| Latino 101         |          1 |
+| Matematica 101     |          3 |
+| Matematica 102     |          2 |
+| Matematica 103     |          1 |
+| Matematica 104     |          1 |
+| Programmazione 101 |          1 |
+| Storia 101         |          1 |
+| Storia 102         |          1 |
++--------------------+------------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT docenti.nome AS Nome_Docente, docenti.cognome AS Cognome_Docente, COUNT(corsi.ID_docente) AS Numero_Corsi FROM docenti
+    -> INNER JOIN corsi ON docenti.ID_docente = corsi.ID_docente
+    -> GROUP BY corsi.ID_docente ORDER BY Numero_Corsi DESC;
++--------------+-----------------+--------------+
+| Nome_Docente | Cognome_Docente | Numero_Corsi |
++--------------+-----------------+--------------+
+| Carla        | Perlato         |            3 |
+| Anna         | Neri            |            3 |
+| Edoardo      | Giallo          |            3 |
+| Giovanni     | Gialli          |            1 |
+| Gianni       | Azzurro         |            1 |
+| Michele      | Arancione       |            1 |
+| Maurizio     | Verde           |            1 |
+| Luca         | Viola           |            1 |
+| Geronimo     | Rosso           |            1 |
++--------------+-----------------+--------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT studenti.nome, studenti.cognome, COUNT(studenti_corsi.ID_studente) AS Frequentazioni FROM studenti
+    -> INNER JOIN studenti_corsi ON studenti.ID_studente = studenti_corsi.ID_studente
+    -> GROUP BY studenti_corsi.ID_studente ORDER BY Frequentazioni DESC LIMIT 3;
++-----------+---------+----------------+
+| nome      | cognome | Frequentazioni |
++-----------+---------+----------------+
+| Lorenzo   | Bianchi |              6 |
+| Francesco | Ferrari |              6 |
+| Giulia    | Rizzo   |              6 |
++-----------+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM corsi ORDER BY data_inizio ASC LIMIT 1;
++----------+----------------+-------------+------------+-------+------------------+------------+
+| ID_corso | nome           | data_inizio | data_fine  | costo | partecipanti_max | ID_docente |
++----------+----------------+-------------+------------+-------+------------------+------------+
+|        1 | Matematica 101 | 2021-01-01  | 2021-02-01 |   100 |                6 |          1 |
++----------+----------------+-------------+------------+-------+------------------+------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT studenti.nome AS Nome_Studente, studenti.cognome AS Cognome_Studente, 
+    -> docenti.nome AS Nome_Docente, docenti.cognome AS Cognome_Docente, COUNT(studenti.ID_studente) AS Numero_Corsi
+    -> FROM studenti
+    -> INNER JOIN studenti_corsi ON studenti.ID_studente = studenti_corsi.ID_studente
+    -> INNER JOIN corsi ON corsi.ID_corso = studenti_corsi.ID_corso
+    -> INNER JOIN docenti ON docenti.ID_docente = corsi.ID_docente
+    -> WHERE corsi.ID_docente = 1 GROUP BY studenti.ID_studente;
++---------------+------------------+--------------+-----------------+--------------+
+| Nome_Studente | Cognome_Studente | Nome_Docente | Cognome_Docente | Numero_Corsi |
++---------------+------------------+--------------+-----------------+--------------+
+| Francesco     | Ferrari          | Anna         | Neri            |            2 |
+| Leonardo      | Russo            | Anna         | Neri            |            2 |
+| Lorenzo       | Bianchi          | Anna         | Neri            |            1 |
+| Riccardo      | Ricci            | Anna         | Neri            |            1 |
+| Sofia         | Bruno            | Anna         | Neri            |            1 |
+| Giulia        | Conti            | Anna         | Neri            |            1 |
+| Emma          | Mancini          | Anna         | Neri            |            1 |
+| Giulia        | Rizzo            | Anna         | Neri            |            1 |
+| Anna          | Fontana          | Anna         | Neri            |            1 |
+| Luca          | Ferrara          | Anna         | Neri            |            1 |
+| Ludovico      | Leone            | Anna         | Neri            |            1 |
+| Paolo         | Lombardo         | Anna         | Neri            |            1 |
+| Luca          | Serra            | Anna         | Neri            |            1 |
++---------------+------------------+--------------+-----------------+--------------+
+13 rows in set (0.00 sec)
+
+mysql> \q

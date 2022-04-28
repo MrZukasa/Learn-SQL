@@ -1,4 +1,4 @@
-INSERT INTO (nome, cognome, email) 
+INSERT INTO docenti(nome, cognome, email) 
 VALUES
 ('Anna','Neri','annaneri@gmail.com'),
 ('Marco','Verdi','marcoverdi@gmail.com'),
@@ -7,7 +7,7 @@ VALUES
 ('Carla','Perlato','carlaperlato@gmail.com'),
 ('Carlo','Ciano','carlociano@gmail.com'),
 ('Edoardo','Giallo','edoardogiallo@gmail.com'),
-('Leonardo','Marrone','edoardogiallo@gmail.com'),
+('Leonardo','Marrone','leonardomarrone@gmail.com'),
 ('Michele','Arancione','michelearancione@gmail.com'),
 ('Gianni','Azzurro','gianniazzurro@gmail.com'),
 ('Giovanni','Gialli','giovannigialli@gmail.com'),

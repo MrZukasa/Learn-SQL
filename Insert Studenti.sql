@@ -1,4 +1,4 @@
-INSERT INTO (nome, cognome, email, data_nascita)
+INSERT INTO studenti(nome, cognome, email, data_nascita)
 VALUES
 ('Francesco','Ferrari','francescoferrari@gmail.com', '2010-09-21'),
 ('Leonardo','Russo','leonardorusso@gmail.com','2010-04-04'),
@@ -12,7 +12,7 @@ VALUES
 ('Sofia','Bruno','sofiabruno@gmail.com','2000-09-01'),
 ('Alice','Gallo','alicegallo@gmail.com','2002-08-19'),
 ('Giulia','Conti','giuliaconti@gmail.com','2005-05-16'),
-('Emma','Mancini','emmamancini@gmail.com','2001-05-13');
+('Emma','Mancini','emmamancini@gmail.com','2001-05-13'),
 ('Ginevra','Costa','ginevracosta@gmail.com','2002-09-20'),
 ('Giulia','Giordano','giuliagiordano@gmail.com','2000-04-22'),
 ('Giulia','Rizzo','giuliarizzo@gmail.com','2000-11-15'),
@@ -36,4 +36,4 @@ VALUES
 ('Luca','Serra','lucaserra@gmail.com','2007-01-15'),
 ('Aurora','Coppola','auroracoppola@gmail.com','2002-11-06'),
 ('Roberto','Marchetti','robertomarchetti@gmail.com','2005-12-09'),
-('Francesco','Parisi','robertomarchetti@gmail.com','2003-10-19'),
+('Francesco','Parisi','francescoparisi@gmail.com','2003-10-19');
